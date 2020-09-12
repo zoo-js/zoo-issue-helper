@@ -124,7 +124,7 @@ export default {
         )
 
         window.location.replace(
-          `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}`
+          `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}&labels=💖%20Application`
         );
       }
     }
