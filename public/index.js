@@ -68,4 +68,5 @@ const PETS = [
   { name: 'dragon', src: '70783905' },
   { name: 'otter', src: '70784646' },
   { name: 'wolf', src: '70870347' },
+  { name: 'goblin', src: '71177746' },
 ]
