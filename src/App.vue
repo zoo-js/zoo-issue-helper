@@ -9,7 +9,7 @@
           <h1>Zoo issue helper </h1>
         </a>
         <div v-if="chose.length > 0" class="chose-pets">
-          <div 
+          <div
             v-for="it in chose"
             :key="it.name"
           >
@@ -85,7 +85,7 @@ export default {
       if (this.chose.length === 3) {
         this.chose.pop()
         this.choseName.pop()
-      } 
+      }
       this.chose.push(pet)
       this.choseName.push(pet.name)
     },
@@ -119,8 +119,8 @@ export default {
 2. ${choseName[1] || ''}
 3. ${choseName[2] || ''}
 
-<!-- 请在上方填写你想要领养的小宠物，原则上仅支持单人领养3只小宠物，请大家谨慎挑选。超出3个，会取前3个哦。 -->
-<!-- Please fill in the small pets you want to adopt at the top. In principle, only 3 small pets can be adopted by one person. Please choose carefully. If there are more than 3, the first 3 will be taken. -->`
+<!-- 请在上方填写你想要领养的小宠物，原则上仅支持单人领养3只小宠物，请大家谨慎挑选。超出3个，会取前3个哦。若您心仪的萌宠没列出，欢迎提出。 -->
+<!-- Please fill in the small pets you want to adopt at the top. In principle, only 3 small pets can be adopted by one person. Please choose carefully. If there are more than 3, the first 3 will be taken. If your favorite pet is not listed, please suggest. -->`
         )
 
         window.location.replace(
