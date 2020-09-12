@@ -47,18 +47,6 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .zoo-header-form {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .zoo-header-tip {
-    display: block;
-  }
-}
-
 .chose-pets {
   margin-left: 20px;
   display: flex;
@@ -85,7 +73,7 @@
     width: calc(100% - 40px);
     max-width: 1024px;
     display: grid;
-    justify-content: space-between;
+    justify-content: space-around;
     grid-template-columns: repeat(auto-fill, 160px);
     grid-gap: 10px;
   }
@@ -93,7 +81,7 @@
     width: 160px;
     height: 200px;
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 12px;
     border: 1px solid #fff;
     transition: all 0.3s;
     cursor: pointer;
@@ -122,5 +110,19 @@
     font-family: "Montserrat";
     font-size: 24px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .zoo-header-form {
+    display: none;
+  }
+
+  .zoo-header-tip {
+    display: block;
+  }
+
+  .chose-pets {
+    display: none;
   }
 }
