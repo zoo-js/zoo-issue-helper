@@ -13,7 +13,7 @@
             v-for="it in chose"
             :key="it.name"
           >
-            <img :src="`https://avatars0.githubusercontent.com/u/${it.src}?s=40&v=4`" />
+            <img :src="`https://avatars0.githubusercontent.com/u/${it.src}?s=100&v=4`" width="40" />
           </div>
         </div>
         <div class="zoo-header-form">
@@ -34,19 +34,20 @@
     </div>
     <div class="zoo-main">
       <div class="zoo-main-content">
-        <div
+        <q-intersection
           class="zoo-main-card"
           v-for="pet in pets"
           :key="pet.name"
+          transition="scale"
           @click="chosePet(pet)"
           :class="choseName.includes(pet.name) ? 'zoo-main-card-chose' : ''">
           <div class="card-img">
-            <img :src="`https://avatars0.githubusercontent.com/u/${pet.src}?s=80&v=4`" />
+            <img :src="`https://avatars0.githubusercontent.com/u/${pet.src}?s=100&v=4`" />
           </div>
           <div class="card-text">
             {{ pet.name }}
           </div>
-        </div>
+        </q-intersection>
       </div>
     </div>
   </div>

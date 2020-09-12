@@ -86,12 +86,12 @@
     max-width: 1024px;
     display: grid;
     justify-content: space-between;
-    grid-template-columns: repeat(auto-fill, 130px);
+    grid-template-columns: repeat(auto-fill, 160px);
     grid-gap: 10px;
   }
   &-card {
-    width: 130px;
-    height: 160px;
+    width: 160px;
+    height: 200px;
     background-color: #fff;
     border-radius: 2px;
     border: 1px solid #fff;
@@ -120,7 +120,7 @@
   }
   &-text {
     font-family: "Montserrat";
-    font-size: 22px;
+    font-size: 24px;
     text-align: center;
   }
 }
