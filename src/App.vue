@@ -74,7 +74,9 @@ export default {
 
   methods: {
     chosePet(pet) {
-      let i = this.choseName.indexOf(pet.name)
+      const ww = document.body.offsetWidth
+      if ( ww < 1024 ) { return false }
+      const i = this.choseName.indexOf(pet.name)
       if (i != -1) {
         this.chose.splice(i,1);
         this.choseName.splice(i,1);
