@@ -102,7 +102,7 @@ export default {
       }
       this.$refs.input.validate()
       if (gitname.length > 0 && choseName.length > 0) {
-        const title = encodeURIComponent(`New 申请`)
+        const title = encodeURIComponent(`[New] 申请`)
         const body = encodeURIComponent(
           `<!-- ❤️ 哇，终于等到你了。 -->
 <!-- ❤️ Wow, finally waiting for you。 -->
