@@ -18,6 +18,7 @@
         </div>
         <div class="zoo-header-form">
           <q-input
+            color="secondary"
             v-model="gitname"
             label="GitHub name *"
             lazy-rules
@@ -124,13 +125,14 @@ export default {
 
 ### 🌈 Tip
 
-- [如何展示](https://github.com/zoo-js/welcome/blob/master/how-to-show.md)
-- [我可以做什么](https://github.com/zoo-js/welcome/blob/master/what-we-can.md)
+- 完成领养后，建议自行关闭 issue。
+- [如何展示？](https://github.com/zoo-js/welcome/blob/master/how-to-show.md)
+- [我可以做什么？](https://github.com/zoo-js/welcome/blob/master/what-we-can.md)
 `
         )
 
         window.location.replace(
-          `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}&labels=💖%20Application`
+          `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}`
         );
       }
     }
