@@ -125,9 +125,9 @@ export default {
 
 ### 🌈 Tip
 
-- 完成领养后，建议自行关闭 issue。
-- [如何展示？](https://github.com/zoo-js/welcome/blob/master/how-to-show.md)
-- [我可以做什么？](https://github.com/zoo-js/welcome/blob/master/what-we-can.md)
+- After completing the adoption, it is recommended to close the issue yourself. 完成领养后，建议自行关闭 issue。
+- [How to show? 如何展示？](https://github.com/zoo-js/welcome/blob/master/how-to-show.md)
+- [What we can? 我可以做什么？](https://github.com/zoo-js/welcome/blob/master/what-we-can.md)
 
 <!-- New application. DO NOT REMOVE! -->
 `
