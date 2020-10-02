@@ -129,7 +129,7 @@ export default {
 - [如何展示？](https://github.com/zoo-js/welcome/blob/master/how-to-show.md)
 - [我可以做什么？](https://github.com/zoo-js/welcome/blob/master/what-we-can.md)
 
-<!-- New application by zoo-issue-helper. DO NOT REMOVE! -->
+<!-- New application. DO NOT REMOVE! -->
 `
         )
 
