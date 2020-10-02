@@ -70,4 +70,12 @@ const PETS = [
   { name: 'wolf', src: '70870347' },
   { name: 'goblin', src: '71177746' },
   { name: 'flamingo', src: '71747962' },
+
+  { name: 'lion', src: '72246448' },
+  { name: 'sun', src: '72177992' },
+  { name: 'moon', src: '72177911' },
+  { name: 'star', src: '72178015' },
+  { name: 'earth', src: '72246621' },
+  // { name: 'goblin', src: '71177746' },
+  // { name: 'flamingo', src: '71747962' },
 ];
