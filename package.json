@@ -5,8 +5,7 @@
   "scripts": {
     "start": "yarn && vue-cli-service serve",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "core-js": "3.6.5",
@@ -15,30 +14,12 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.5.7",
-    "@vue/cli-plugin-eslint": "4.5.7",
     "@vue/cli-service": "4.5.7",
-    "babel-eslint": "10.1.0",
     "compression-webpack-plugin": "6.0.3",
-    "eslint": "7.11.0",
-    "eslint-plugin-vue": "7.0.1",
     "sass": "1.27.0",
     "sass-loader": "10.0.3",
     "script-loader": "0.7.2",
     "vue-template-compiler": "2.6.12"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
