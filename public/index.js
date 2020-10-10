@@ -1,5 +1,5 @@
 const PETS = [
-  { name: 'cat', src: '70745181' },
+  { name: 'cat', src: '72658591' },
   { name: 'dog', src: '70746150' },
   { name: 'ant', src: '70746215' },
   { name: 'pig', src: '70749293' },
