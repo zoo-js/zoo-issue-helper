@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import HTTP from './http.js'
+
+Vue.prototype.$http = HTTP
 
 Vue.config.productionTip = false
 
