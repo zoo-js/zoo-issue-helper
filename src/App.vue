@@ -13,7 +13,7 @@
             v-for="it in chose"
             :key="it.name"
           >
-            <img :src="`https://avatars0.githubusercontent.com/u/${it.src}?s=100&v=4`" width="40" />
+            <img :src="`https://avatars0.githubusercontent.com/u/${it.code}?s=100&v=4`" width="40" />
           </div>
         </div>
         <div class="zoo-header-form">
@@ -33,6 +33,7 @@
         </div>
       </div>
     </div>
+
     <div class="zoo-main">
       <div class="zoo-main-content">
         <q-intersection
@@ -43,7 +44,7 @@
           @click="chosePet(pet)"
           :class="choseName.includes(pet.name) ? 'zoo-main-card-chose' : ''">
           <div class="card-img">
-            <img :src="`https://avatars0.githubusercontent.com/u/${pet.src}?s=100&v=4`" />
+            <img :src="`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`" />
           </div>
           <div class="card-text">
             {{ pet.name }}
@@ -62,10 +63,11 @@ export default {
     this.$q.loadingBar.setDefaults({
       color: 'secondary',
     });
+    this.loadData();
   },
   data() {
     return {
-      pets: window.ZOO_HELPER_CONFIG['PETS'].sort((a, b) => a.name.localeCompare(b.name)),
+      pets: [],
       chose: [],
       choseName: [],
       limitNo: 5,
@@ -75,6 +77,14 @@ export default {
   },
 
   methods: {
+    loadData() {
+      this.$http.get('organizations.json').then(res =>{
+        this.pets = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
+      },rej => {
+        console.log(rej)
+      })
+    },
+
     chosePet(pet) {
       const ww = document.body.offsetWidth
       if ( ww < 1024 ) { return false }
