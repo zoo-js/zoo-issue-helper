@@ -31,6 +31,9 @@
         <div class="zoo-header-tip">
           Below 1024px preview only !
         </div>
+        <a href="https://zoo-js.github.io/zoo-charts/" target="_blank" class="goto">
+          View charts!
+        </a>
       </div>
     </div>
 

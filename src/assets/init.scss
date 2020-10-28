@@ -59,6 +59,34 @@
   }
 }
 
+.goto {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid red;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia);
+  animation: hue 4s linear infinite;
+  font-family: "Montserrat";
+}
+
+.goto:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hue {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
 // main
 .zoo-main {
   width: 100%;
@@ -125,6 +153,12 @@
 
   .chose-pets {
     display: none;
+  }
+}
+
+@media (max-width: 1190px) and (min-width: 1025px) {
+  .goto {
+    top: 80px;
   }
 }
 
