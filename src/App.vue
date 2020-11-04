@@ -19,12 +19,12 @@
         <div class="zoo-header-form">
           <q-input
             color="secondary"
-            v-model="gitname"
-            label="GitHub name *"
+            v-model="gitEmail"
+            label="GitHub Email *"
             lazy-rules
             ref="input"
             style="width: 200px;"
-            :rules="[ val => val && val.length > 0 || 'Please type your GitHub name!']"
+            :rules="[ val => val && val.length > 0 || 'Please type your GitHub Email!']"
           />
           <q-btn style="height: 36px; width: 100px; margin-top: 18px; margin-left: 30px;" push color="secondary" no-caps @click="doSub" >Submit</q-btn>
         </div>
@@ -74,14 +74,13 @@ export default {
       chose: [],
       choseName: [],
       limitNo: 5,
-
-      gitname: '',
+      gitEmail: '',
     }
   },
 
   methods: {
     loadData() {
-      this.$http.get('organizations.json').then(res =>{
+      this.$http.get('organizations.json').then( res => {
         this.pets = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
       },rej => {
         console.log(rej)
@@ -90,9 +89,9 @@ export default {
 
     chosePet(pet) {
       const ww = document.body.offsetWidth
-      if ( ww < 1024 ) { return false }
+      if ( ww < 1024 ) return false;
       const i = this.choseName.indexOf(pet.name)
-      if (i != -1) {
+      if (i !== -1) {
         this.chose.splice(i,1);
         this.choseName.splice(i,1);
         return false
@@ -106,7 +105,7 @@ export default {
     },
 
     doSub() {
-      const { gitname, choseName } = this
+      const { gitEmail, choseName } = this
       if (choseName.length == 0) {
         this.$q.notify({
           message: 'Please chose cute pets!',
@@ -115,7 +114,7 @@ export default {
         })
       }
       this.$refs.input.validate()
-      if (gitname.length > 0 && choseName.length > 0) {
+      if (gitEmail.length > 0 && choseName.length > 0) {
         const title = encodeURIComponent(`[New] 申请`)
         const body = encodeURIComponent(
           `<!-- ❤️ 哇，终于等到你了。 -->
@@ -123,18 +122,16 @@ export default {
 
 ### 😀 申请人 Applicant
 
-- GitHub: ${gitname}
+- GitHub: ${gitEmail}
 
-<!-- 请在上方输入你的 GitHub 用户名 -->
-<!-- Please enter your GitHub username above -->
+<!-- 请在上方输入你的 GitHub 邮箱 -->
+<!-- Please enter your GitHub Email above -->
 
 ### 🌏 领养宠物 Adopt pets
 
-1. ${choseName[0]}
-2. ${choseName[1] || ''}
-3. ${choseName[2] || ''}
-4. ${choseName[3] || ''}
-5. ${choseName[4] || ''}
+${choseName.map( (name,index) => {
+  return index+1 + '. ' +name +'\n'
+}).join('')}
 
 <!-- 请在上方填写你想要领养的小宠物，原则上仅支持单人领养 5 只小宠物，请大家谨慎挑选。超出 5 个，会取前 5 个哦。若您心仪的萌宠没列出，欢迎提出。 -->
 <!-- Please fill in the small pets you want to adopt at the top. In principle, only 5 small pets can be adopted by one person. Please choose carefully. If there are more than 5, the first 5 will be taken. If your favorite pet is not listed, please suggest. -->
