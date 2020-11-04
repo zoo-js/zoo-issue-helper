@@ -89,7 +89,7 @@ export default {
 
     chosePet(pet) {
       const ww = document.body.offsetWidth
-      if ( ww < 1024 ) return false;
+      if ( ww < 1024 ) return false
       const i = this.choseName.indexOf(pet.name)
       if (i !== -1) {
         this.chose.splice(i,1);
@@ -122,7 +122,7 @@ export default {
 
 ### 😀 申请人 Applicant
 
-- GitHub: ${gitEmail}
+- GitHub Email: ${gitEmail}
 
 <!-- 请在上方输入你的 GitHub 邮箱 -->
 <!-- Please enter your GitHub Email above -->
