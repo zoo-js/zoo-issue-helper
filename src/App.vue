@@ -122,7 +122,7 @@ export default {
 
 ### 😀 申请人 Applicant
 
-- GitHub Email: ${gitEmail}
+GitHub Email: ${gitEmail}
 
 <!-- 请在上方输入你的 GitHub 邮箱 -->
 <!-- Please enter your GitHub Email above -->
