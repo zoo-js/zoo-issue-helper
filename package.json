@@ -5,7 +5,8 @@
   "scripts": {
     "start": "yarn && vue-cli-service serve",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build:dev": "set NODE_ENV='development' && vue-cli-service build"
   },
   "dependencies": {
     "axios": "0.21.0",
