@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    font-size: 62.5%;
+    background-image: linear-gradient(180deg, #eaf1e7 30%, #d9dfe4 45%, #e6dcc8 71%, #eaf1e7 91%);
+    user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    .goto {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid red;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia);
+        animation: hue 4s linear infinite;
+        font-family: "Montserrat";
+        &:hover {
+            animation-play-state: paused;
+        }
+    }
+    @keyframes hue {
+        from { filter: hue-rotate(0deg); }
+        to { filter: hue-rotate(360deg); }
+    }
+    
+    .zoo-header {
+        background-color: #fff;
+        box-shadow: 4px 4px 12px #d7dbe0;
+        position: fixed;
+        top: 0;
+        height: 76px;
+        width: 100vw;
+        z-index: 99;
+        &-content {
+            width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            height: 76px;
+            line-height: 76px;
+            a + a {
+              margin-left: 10px;
+              text-decoration: none;
+            }
+            h1 {
+                font-family: "Montserrat";
+                margin: 0 20px;
+                font-size: 24px;
+                line-height: 76px;
+                font-weight: normal;
+                color: rgba(0,0,0,.85);
+                text-shadow: #494a45 1px 2px 4px;
+            }
+            img {
+                margin-top: 8px;
+            }
+        }
+        &-form {
+            position: absolute;
+            display: flex;
+            margin-left: 600px;
+            align-items: center;
+        }
+        &-item {
+            input {
+                border: none;
+                border-bottom: 2px solid #26A699;
+                width: 200px;
+                outline: none;
+                padding: 6px;
+                font-size: 18px;
+            }
+            label {
+                height:0;
+                position: absolute;
+                transition: all .5s;
+                font-size: 16px;
+                color: #666;
+            }
+            .label-title {
+                transform: translateX(-20px) translateY(-10px) scale(0.7);
+                color: #26A699;
+            }
+
+        }
+        &-submit {
+            outline:none;
+            filter: chroma(color=#000000);  
+            font-size: 16px;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            margin-left: 20px;
+            background-color: #5bb9b0;
+            box-shadow: 0 0 2px  #26A699;
+            transition: all .3s;
+            cursor: pointer;
+            &:hover {
+                background-color: #4ac5bb;
+                box-shadow: 0 0 10px  #2da196;
+            }
+            &:active {
+                transform: translateY(2px);
+            }
+        }
+    }
+
+    .below-msg {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        opacity: 0;
+    }
+    
+    .chose-pets {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        div {
+          display: flex;
+          & + div {
+            margin-left: 10px;
+          }
+        }
+      }
+    
+    .zoo-main {
+        width: 100%;
+        margin-top: 84px;
+        height: calc(100vh - 84px);
+        display: flex;
+        justify-content: center;
+        &-content {
+            margin: 20px;
+            width: calc(100% - 40px);
+            max-width: 1280px;
+            display: grid;
+            justify-content: space-around;
+            grid-template-columns: repeat(auto-fill, 160px);
+            grid-gap: 10px;
+        }
+        &-card {
+            width: 160px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 12px;
+            border: 1px solid #fff;
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-top: 10px;
+            &:hover {
+                box-shadow: 0 1px 2px -2px rgba(0,0,0,.16), 0 3px 6px 0 rgba(0,0,0,.12), 0 5px 12px 4px rgba(0,0,0,.09);
+              }
+              &:last-child {
+                margin-bottom: 40px;
+              }
+              &-chose {
+                border-color: #26A699;
+                box-shadow: 0 1px 2px -2px #26a69991, 0 3px 6px 0 #26a69945, 0 5px 12px 4px #26a69945 !important;
+              }
+        }
+    }
+    
+    .card-img {
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .card-text {
+        font-family: "Montserrat";
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .error-msg {
+        background-color: #d84848;
+        color: white;
+        font-size: 20px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        position: fixed;
+        display: flex;
+        right: 10px;
+        top: 20px;
+        transition: all .5s;
+        box-shadow: 0 0 10px rgb(209, 97, 97);
+        &-show {
+            top: 90px;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        .zoo-header-form {
+            display: none;
+        }
+    
+        .zoo-header-tip {
+            display: block;
+            position: absolute;
+            right: 30px;
+        }
+    
+        .chose-pets {
+            display: none;
+        }
+    
+        .goto {
+            font-size: 1rem;
+            width: 120px;
+            height: 30px;
+            line-height: 2;
+        }
+
+        .error-msg {
+            display: none;
+        }
+
+        .below-msg {
+            color: #e91e63;
+            opacity: 1;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .zoo-header-content {
+            h1 {
+                display: none;
+            }
+        }
+    }
+}

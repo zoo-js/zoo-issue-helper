@@ -11,16 +11,16 @@
     "axios": "0.21.0",
     "core-js": "3.6.5",
     "quasar": "1.14.2",
-    "vue": "2.6.12"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.5.8",
-    "@vue/cli-service": "4.5.8",
-    "compression-webpack-plugin": "6.0.4",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "compression-webpack-plugin": "^6.0.5",
     "sass": "1.29.0",
-    "sass-loader": "10.0.5",
-    "script-loader": "0.7.2",
-    "vue-template-compiler": "2.6.12"
+    "sass-loader": "10.0.5"
   },
   "browserslist": [
     "> 1%",
