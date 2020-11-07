@@ -34,14 +34,14 @@ const loadDirective = {
             root: null,
             rootMargin: '0px'
         })
-        
+
         io.observe(el)
     }
 }
 
 export default defineComponent({
 
-    directives: { 
+    directives: {
         lazyLoad: loadDirective,
     },
 
@@ -55,10 +55,10 @@ export default defineComponent({
             limitNo: 5,
             gitEmail: '',
             iFocus: false,
-            errorMsg: 'please pick your pet~',
+            errorMsg: 'Please pick your pet~',
             errShow: false,
         })
-    
+
         const getPets = () => {
             HTTP.get('organizations.json').then( res => {
                 state.petList = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
@@ -66,7 +66,7 @@ export default defineComponent({
                 console.log(rej)
             })
         }
-    
+
         const pickPets = (pet) => {
             const ww = document.body.offsetWidth
             if ( ww < 1024 ) return false
@@ -85,7 +85,7 @@ export default defineComponent({
         const submit = () => {
             clearTimeout(timer)
             if(!Object.keys(state.pickTarget).length) {
-                state.errorMsg = 'please pick your pet~'
+                state.errorMsg = 'Please pick your pets ~'
                 state.errShow = true
                 timer = setTimeout(()=>{
                     state.errShow = false
@@ -93,7 +93,7 @@ export default defineComponent({
                 return false
             }
             if(!state.gitEmail) {
-                state.errorMsg = 'please enter your gitEmail'
+                state.errorMsg = 'Please enter your email address !'
                 state.errShow = true
                 timer = setTimeout(()=>{
                     state.errShow = false
@@ -103,7 +103,7 @@ export default defineComponent({
             const rePass = new RegExp('^([a-zA-Z0-9]+[_|\\_|\\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\\_|\\.]?)*[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$', '');
             const isPass = rePass.test(state.gitEmail);
             if (isPass == false) {
-                state.errorMsg = 'please check the gitEmail format'
+                state.errorMsg = 'Please make sure to enter a valid email address !'
                 state.errShow = true
                 timer = setTimeout(()=>{
                     state.errShow = false
@@ -114,33 +114,33 @@ export default defineComponent({
             const body = encodeURIComponent(
 `<!-- ❤️ 哇，终于等到你了。 -->
 <!-- ❤️ Wow, finally waiting for you。 -->
-    
+
 ### 😀 申请人 Applicant
-    
+
 GitHub Email: ${state.gitEmail}
-    
+
 <!-- 请在上方输入你的 GitHub 邮箱 -->
 <!-- Please enter your GitHub Email above -->
-    
+
 ### 🌏 领养宠物 Adopt pets
-    
+
 ${Object.keys(state.pickTarget).map((name,index) => {
     return index+1 + '. ' +name +'\n'
 }).join('')}
-    
+
 <!-- 请在上方填写你想要领养的小宠物，原则上仅支持单人领养 5 只小宠物，请大家谨慎挑选。超出 5 个，会取前 5 个哦。若您心仪的萌宠没列出，欢迎提出。 -->
 <!-- Please fill in the small pets you want to adopt at the top. In principle, only 5 small pets can be adopted by one person. Please choose carefully. If there are more than 5, the first 5 will be taken. If your favorite pet is not listed, please suggest. -->
-    
+
 ### 🌈 Tip
-    
+
 - After completing the adoption, it is recommended to close the issue yourself. 完成领养后，建议自行关闭 issue。
 - [How to show? 如何展示？](https://github.com/zoo-js/welcome/blob/main/how-to-show.md)
 - [What we can? 我可以做什么？](https://github.com/zoo-js/welcome/blob/main/what-we-can.md)
-    
+
 <!-- New application. DO NOT REMOVE! -->
 `
             )
-    
+
             window.location.replace(
               `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}`
             );
@@ -153,7 +153,7 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                         <img src={`https://avatars1.githubusercontent.com/u/70757173?s=60&v=4`} />
                     </a>
                     <a href="https://github.com/zoo-js/zoo-issue-helper" target="_blank">
-                        <h1>Zoo issue helper </h1>
+                        <h1>Zoo issue helper</h1>
                     </a>
                     <div class="chose-pets">
                         {
@@ -164,13 +164,13 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                     </div>
                     <div class="zoo-header-form">
                         <div class="zoo-header-item">
-                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={()=>{document.getElementById('searchInput').focus()}} >enter your gitEmail</label>
-                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={()=>{state.iFocus = true}} onBlur={()=>{state.iFocus = false}}/>  
+                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={()=>{document.getElementById('searchInput').focus()}} >Enter your GitHub Email</label>
+                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={()=>{state.iFocus = true}} onBlur={()=>{state.iFocus = false}}/>
                         </div>
                         <button class="zoo-header-submit" onClick={()=>{submit()}}>Submit</button>
                     </div>
                     <a href="https://zoo-js.github.io/zoo-charts/" target="_blank" class="goto">
-                        View charts!
+                        View charts !
                     </a>
                     <p class="below-msg">Below 1024px preview only !</p>
                 </div>
@@ -199,19 +199,19 @@ ${Object.keys(state.pickTarget).map((name,index) => {
         }
 
         const renderError = () => {
-            return <div class={state.errShow?'error-msg error-msg-show':'error-msg'}>
+            return <div class={state.errShow ? 'error-msg error-msg-show' : 'error-msg'}>
                 <span>{state.errorMsg}</span>
             </div>
         }
-    
+
         onMounted( () => {
             getPets()
         })
 
-        return () => <div>
+        return () => <>
             { renderHeader() }
             { renderMain() }
             { renderError() }
-        </div>
+        </>
     }
 })
