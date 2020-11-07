@@ -164,7 +164,7 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                     </div>
                     <div class="zoo-header-form">
                         <div class="zoo-header-item">
-                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={()=>{document.getElementById('searchInput').focus()}} >Enter your GitHub Email</label>
+                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={()=>{document.getElementById('searchInput').focus()}} >Enter your GitHub2222 Email</label>
                             <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={()=>{state.iFocus = true}} onBlur={()=>{state.iFocus = false}}/>
                         </div>
                         <button class="zoo-header-submit" onClick={()=>{submit()}}>Submit</button>
