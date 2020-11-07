@@ -20,7 +20,7 @@
           <q-input
             color="secondary"
             v-model="gitEmail"
-            label="GitHub Email *"
+            label="GitHub Email222222 *"
             lazy-rules
             ref="input"
             style="width: 200px;"
