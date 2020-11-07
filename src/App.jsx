@@ -4,13 +4,25 @@ import './style.scss'
 import HTTP from './http.js'
 
 // directives
-const customDirective = {
-    mounted(el) {
+const loadDirective = {
+    mounted(el, ctx) {
         el.style.transition = 'all .5s'
         el.style.transform = 'scale(0)'
         el.style.opacity = '0.4'
+        el.src="loading.gif"
+        let lazyLoadList = []
         let io = new IntersectionObserver(([ entry ])=>{
             if( entry.isIntersecting ) {
+                if (lazyLoadList.includes(ctx.value)) {
+                    el.src = ctx.value
+                } else {
+                    let image = new Image()
+                    image.src = ctx.value
+                    image.onload = function(){
+                        el.src = ctx.value;
+                        lazyLoadList.push(ctx.value)
+                    }
+                }
                 el.style.transform = 'scale(1)'
                 el.style.opacity = '1'
             } else {
@@ -29,7 +41,9 @@ const customDirective = {
 
 export default defineComponent({
 
-    directives: { autoshow: customDirective},
+    directives: { 
+        lazyLoad: loadDirective,
+    },
 
     setup() {
 
@@ -175,8 +189,8 @@ ${Object.keys(state.pickTarget).map((name,index) => {
 
         const renderPet = (pet) => {
             return <div onClick={()=>{pickPets(pet)}} class={ state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
-                <div vAutoshow class="card-img">
-                    <img src={`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`} />
+                <div class="card-img">
+                    <img vLazyLoad={`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`}/>
                 </div>
                 <div class="card-text">
                     { pet.name }

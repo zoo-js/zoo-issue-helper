@@ -180,6 +180,10 @@ body {
         margin: 20px auto;
         display: flex;
         justify-content: center;
+        img {
+            width: 100px;
+            height: 100px;
+        }
     }
     
     .card-text {
