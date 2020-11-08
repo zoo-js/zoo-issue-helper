@@ -124,6 +124,7 @@ body {
                 transform: translateY(4px);
             }
         }
+
     }
 
     .below-msg {
@@ -139,7 +140,15 @@ body {
         display: flex;
         align-items: center;
         div {
+          position: relative;
           display: flex;
+          .clear-pet{
+            position: absolute;
+            right: -30%;
+            top: -10%;
+            transform: scale(0.7);
+            cursor: pointer;
+          }
           & + div {
             margin-left: 10px;
           }
