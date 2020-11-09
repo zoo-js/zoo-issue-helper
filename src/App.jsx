@@ -158,16 +158,18 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                     <div class="chose-pets">
                         {
                             Object.values(state.pickTarget).map( item => {
-                                return <div><img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} width="40" /></div>
+                                return <div>
+                                    <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={ () => { pickPets(state.pickTarget[item.name]) } } width="40" />
+                                </div>
                             })
                         }
                     </div>
                     <div class="zoo-header-form">
                         <div class="zoo-header-item">
-                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={()=>{document.getElementById('searchInput').focus()}} >Enter your GitHub Email</label>
-                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={()=>{state.iFocus = true}} onBlur={()=>{state.iFocus = false}}/>
+                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={ () => { document.getElementById('searchInput').focus() } } >Enter your GitHub Email</label>
+                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={ () => { state.iFocus = true } } onBlur={ () => { state.iFocus = false } }/>
                         </div>
-                        <button class="zoo-header-submit" onClick={()=>{submit()}}>Submit</button>
+                        <button class="zoo-header-submit" onClick={ () => { submit() } }>Submit</button>
                     </div>
                     <a href="https://zoo-js.github.io/zoo-charts/" target="_blank" class="goto">
                         View charts !
@@ -188,7 +190,7 @@ ${Object.keys(state.pickTarget).map((name,index) => {
         }
 
         const renderPet = (pet) => {
-            return <div onClick={()=>{pickPets(pet)}} class={ state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
+            return <div onClick={ () => { pickPets(pet) } } class={ state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
                 <div class="card-img">
                     <img vLazyLoad={`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`}/>
                 </div>
