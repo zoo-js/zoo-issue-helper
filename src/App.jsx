@@ -153,7 +153,7 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                         <img src={`https://avatars1.githubusercontent.com/u/70757173?s=60&v=4`} />
                     </a>
                     <a href="https://github.com/zoo-js/zoo-issue-helper" target="_blank">
-                        <h1>Zoo issue helper</h1>
+                        <h1>Zoo issue helper2222</h1>
                     </a>
                     <div class="chose-pets">
                         {
