@@ -159,12 +159,7 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                         {
                             Object.values(state.pickTarget).map( item => {
                                 return <div>
-                                    <svg width="30" height="30" class="clear-pet" onClick={ () => { pickPets(state.pickTarget[item.name]) } } xmlns="https://www.w3.org/2000/svg">
-                                        <circle class="circle" cx="15" cy="15" r="15" fill="red" />
-                                        <path class="line" stroke="white" stroke-width="2" d="M10,10L20,20" />
-                                        <path class="line" stroke="white" stroke-width="2" d="M20,10L10,20" />
-                                    </svg>
-                                    <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} width="40" />
+                                    <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={ () => { pickPets(state.pickTarget[item.name]) } } width="40" />
                                 </div>
                             })
                         }
