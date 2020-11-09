@@ -141,6 +141,9 @@ body {
         align-items: center;
         div {
           display: flex;
+          img {
+              cursor: pointer;
+          }
           & + div {
             margin-left: 10px;
           }
