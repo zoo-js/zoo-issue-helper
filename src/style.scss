@@ -265,3 +265,39 @@ body {
         }
     }
 }
+
+.pets-beat-enter-active {
+    animation: petEnter 0.4s;
+}
+.pet-beat-leave-active {
+    animation: petLeave 0.4s;
+}
+
+@keyframes petEnter {
+    0% {
+        transform: translateY(0px) scale(0.6);
+        opacity: 0;
+    }
+    40% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+@keyframes petLeave {
+    0% {
+        transform: translateY(0px)  scale(1);
+        opacity: 1;
+    }
+    40% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0)  scale(0.5);
+        opacity: 0;
+    }
+}
