@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, reactive } from 'vue'
+import { defineComponent, onMounted, reactive, Transition, TransitionGroup } from 'vue'
 import './style.scss'
 
 import HTTP from './http.js'
@@ -72,14 +72,17 @@ export default defineComponent({
             if ( ww < 1024 ) return false
             const pickPet = state.pickTarget[pet.name]
             if (pickPet) {
-              delete state.pickTarget[pet.name]
+              state.pickTarget[pet.name].hide = true
+              setTimeout(()=> {
+                delete state.pickTarget[pet.name]
+              }, 400)
               return false
             }
             const keys = Object.keys(state.pickTarget)
             if (keys.length >= state.limitNo) {
               delete state.pickTarget[keys[0]]
             }
-            state.pickTarget[pet.name] = pet
+            state.pickTarget[pet.name] = {...pet, hide:false}
         }
 
         const submit = () => {
@@ -155,15 +158,21 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                     <a href="https://github.com/zoo-js/zoo-issue-helper" target="_blank">
                         <h1>Zoo issue helper</h1>
                     </a>
+                    
                     <div class="chose-pets">
-                        {
-                            Object.values(state.pickTarget).map( item => {
-                                return <div>
-                                    <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={ () => { pickPets(state.pickTarget[item.name]) } } width="40" />
-                                </div>
-                            })
-                        }
+                        <TransitionGroup name="pets-beat">
+                            {
+                                Object.values(state.pickTarget).map( (item, index) => {
+                                    return <div key={index}>
+                                        <Transition name="pet-beat">
+                                            {!item.hide?<img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={ () => { pickPets(state.pickTarget[item.name]) } } width="40" />:null}
+                                        </Transition>
+                                    </div>
+                                })
+                            }
+                        </TransitionGroup>
                     </div>
+
                     <div class="zoo-header-form">
                         <div class="zoo-header-item">
                             <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={ () => { document.getElementById('searchInput').focus() } } >Enter your GitHub Email</label>
