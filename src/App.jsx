@@ -136,7 +136,6 @@ ${Object.keys(state.pickTarget).map((name,index) => {
 
 ### 🌈 Tip
 
-- After completing the adoption, it is recommended to close the issue yourself. 完成领养后，建议自行关闭 issue。
 - [How to show? 如何展示？](https://github.com/zoo-js/welcome/blob/main/how-to-show.md)
 - [What we can? 我可以做什么？](https://github.com/zoo-js/welcome/blob/main/what-we-can.md)
 
