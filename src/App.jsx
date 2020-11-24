@@ -50,7 +50,7 @@ export default defineComponent({
         let timer
 
         const state = reactive({
-            petList: [],
+            petTarget: {},
             pickTarget: {},
             limitNo: 5,
             gitEmail: '',
@@ -61,7 +61,11 @@ export default defineComponent({
 
         const getPets = () => {
             HTTP.get('organizations.json').then( res => {
-                state.petList = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
+                let petList = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
+                petList.forEach(item => {
+                    state.petTarget[item.type]?state.petTarget[item.type].push(item):state.petTarget[item.type]=[item]
+                })
+                console.log(state.petTarget)
             },rej => {
                 console.log(rej)
             })
@@ -188,13 +192,28 @@ ${Object.keys(state.pickTarget).map((name,index) => {
         }
 
         const renderMain = () => {
-            return <div class="zoo-main">
-                <div class="zoo-main-content">{
-                state.petList.map( item => {
-                    return renderPet(item)
-                })
-            }</div>
+            return <div>  
+                    {
+                        Object.keys(state.petTarget).sort((a, b) => a.localeCompare(b)).map(key => {
+                            return renderPetItem(key, state.petTarget[key])
+                        })
+                    }
             </div>
+        }
+
+        const renderPetItem = (key, petList) => {
+            return <>
+                <p class="zoo-class">{key}</p>
+                <div class="zoo-main">
+                    <div class="zoo-main-content">
+                        {
+                            petList.map(item => {
+                                return renderPet(item)
+                            })
+                        }
+                    </div>
+                </div>
+            </>
         }
 
         const renderPet = (pet) => {
