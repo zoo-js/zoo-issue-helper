@@ -57,7 +57,7 @@ export default defineComponent({
             limitNo: 5,
             gitEmail: '',
             iFocus: false,
-            errorMsg: 'Please pick your pet~',
+            errorMsg: 'Please pick your lovers !',
             errShow: false,
             className: ''
         })
@@ -93,7 +93,7 @@ export default defineComponent({
         const submit = () => {
             clearTimeout(timer)
             if (!Object.keys(state.pickTarget).length) {
-                state.errorMsg = 'Please pick your pets ~'
+                state.errorMsg = 'Please pick your lovers !'
                 state.errShow = true
                 timer = setTimeout(() => {
                     state.errShow = false
@@ -135,7 +135,6 @@ GitHub Email: ${state.gitEmail}
 ${Object.keys(state.pickTarget).map((name, index) => {
                     return index + 1 + '. ' + name + '\n'
                 }).join('')}
-
 <!-- 请在上方填写你想要领养的萌物，原则上仅支持单人领养5个，请大家谨慎挑选。超出5个，会取前5个哦。若您心仪的萌物没列出，欢迎提出。 -->
 <!-- Please fill in the small pets you want to adopt at the top. In principle, only 5 small pets can be adopted by one person. Please choose carefully. If there are more than 5, the first 5 will be taken. If your favorite pet is not listed, please suggest. -->
 

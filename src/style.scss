@@ -2,7 +2,8 @@
 $theme-color: #26A699;
 $theme-shadow-color: #72c5bd;
 $theme-hover-color: #4ac5bb;
-$theme-default-color: #fff;
+$theme-text-color: #fff;
+$theme-error-color: #d84848;
 
 * {
     margin: 0;
@@ -132,7 +133,7 @@ body {
             outline: none;
             filter: chroma(color=#000000);
             font-size: 16px;
-            color: $theme-default-color;
+            color: $theme-text-color;
             padding: 8px 20px;
             border: none;
             border-radius: 4px;
@@ -199,21 +200,26 @@ body {
             cursor: pointer;
             padding: 8px 20px;
             border: 1px solid $theme-color;
-            border-radius: 10px;
+            border-radius: 6px;
             font-weight: bold;
+            text-transform: capitalize;
             background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 2px $theme-shadow-color;
             color: $theme-color;
             transition: all .5s;
 
             &:hover {
-                border: 1px solid $theme-hover-color;
-                background-color: $theme-hover-color;
-                color: $theme-default-color;
+                border: 1px solid $theme-color;
+                background-color: $theme-color;
+                color: $theme-text-color;
             }
             &-active {
                 background-color: $theme-color;
-                color: $theme-default-color;
+                color: $theme-text-color;
+                &:hover {
+                    border: 1px solid $theme-hover-color;
+                    background-color: $theme-hover-color;
+                }
             }
         }
     }
@@ -260,20 +266,17 @@ body {
 
     .zoo-show {
         opacity: 1;
-        transition: all 1s;
-        z-index: 90;
+        transition: all 0.5s;
+        z-index: 8;
     }
 
     .zoo-hide {
-        z-index: 80;
+        z-index: 7;
         opacity: 0;
 
         div {
             height: 0;
         }
-
-        transform: translateY(50px);
-        transition: all .6s;
 
         .card-text {
             display: none;
@@ -299,8 +302,8 @@ body {
     }
 
     .error-msg {
-        background-color: #d84848;
-        color: white;
+        background-color: $theme-error-color;
+        color: $theme-text-color;
         font-size: 20px;
         padding: 10px 16px;
         border-radius: 8px;
@@ -308,8 +311,9 @@ body {
         display: flex;
         right: 10px;
         top: 20px;
-        transition: all .5s;
+        transition: all .4s;
         box-shadow: 0 0 10px rgb(209, 97, 97);
+        z-index: 9;
 
         &-show {
             top: 90px;
