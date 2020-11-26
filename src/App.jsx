@@ -47,6 +47,8 @@ export default defineComponent({
 
     setup() {
 
+        const sortClassNames = ['animal', 'food', 'natural']
+
         let timer
 
         const state = reactive({
@@ -62,8 +64,7 @@ export default defineComponent({
 
         const getPets = () => {
             HTTP.get('organizations.json').then(res => {
-                let petList = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
-                petList.forEach(item => {
+                res.data.data.forEach(item => {
                     state.petTarget[item.type] ? state.petTarget[item.type].push(item) : state.petTarget[item.type] = [item]
                 })
             }, rej => {
@@ -119,7 +120,7 @@ export default defineComponent({
             }
             const title = encodeURIComponent(`[New] 申请`)
             const body = encodeURIComponent(
-                `<!-- ❤️ 哇，终于等到你了。 -->
+`<!-- ❤️ 哇，终于等到你了。 -->
 <!-- ❤️ Wow, finally waiting for you。 -->
 
 ### 😀 申请人 Applicant
@@ -215,15 +216,14 @@ ${Object.keys(state.pickTarget).map((name, index) => {
         }
 
         const renderPetItem = (className, petList) => {
-            return <div>
-                <div class={className === state.className ? 'zoo-main zoo-show' : 'zoo-main zoo-hide'}>
-                    <div class="zoo-main-content">
-                        {
-                            petList.map(item => {
-                                return renderPet(item)
-                            })
-                        }
-                    </div>
+            petList = sortClassNames.includes(className) ? petList.sort((a, b) => a['name'].localeCompare(b['name'])) : petList
+            return <div class={className === state.className ? 'zoo-main zoo-show' : 'zoo-main zoo-hide'}>
+                <div class="zoo-main-content">
+                    {
+                        petList.map(item => {
+                            return renderPet(item)
+                        })
+                    }
                 </div>
             </div>
         }
