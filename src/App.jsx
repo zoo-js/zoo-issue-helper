@@ -9,16 +9,16 @@ const loadDirective = {
         el.style.transition = 'all .5s'
         el.style.transform = 'scale(0)'
         el.style.opacity = '0.4'
-        el.src="loading.gif"
+        el.src = "loading.gif"
         let lazyLoadList = []
-        let io = new IntersectionObserver(([ entry ])=>{
-            if( entry.isIntersecting ) {
+        let io = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
                 if (lazyLoadList.includes(ctx.value)) {
                     el.src = ctx.value
                 } else {
                     let image = new Image()
                     image.src = ctx.value
-                    image.onload = function(){
+                    image.onload = function () {
                         el.src = ctx.value;
                         lazyLoadList.push(ctx.value)
                     }
@@ -57,52 +57,52 @@ export default defineComponent({
             iFocus: false,
             errorMsg: 'Please pick your pet~',
             errShow: false,
+            className: ''
         })
 
         const getPets = () => {
-            HTTP.get('organizations.json').then( res => {
+            HTTP.get('organizations.json').then(res => {
                 let petList = res.data.data.sort((a, b) => a.name.localeCompare(b.name))
                 petList.forEach(item => {
-                    state.petTarget[item.type]?state.petTarget[item.type].push(item):state.petTarget[item.type]=[item]
+                    state.petTarget[item.type] ? state.petTarget[item.type].push(item) : state.petTarget[item.type] = [item]
                 })
-                console.log(state.petTarget)
-            },rej => {
+            }, rej => {
                 console.log(rej)
             })
         }
 
         const pickPets = (pet) => {
             const ww = document.body.offsetWidth
-            if ( ww < 1024 ) return false
+            if (ww < 1024) return false
             const pickPet = state.pickTarget[pet.name]
             if (pickPet) {
-              state.pickTarget[pet.name].hide = true
-              setTimeout(()=> {
-                delete state.pickTarget[pet.name]
-              }, 400)
-              return false
+                state.pickTarget[pet.name].hide = true
+                setTimeout(() => {
+                    delete state.pickTarget[pet.name]
+                }, 400)
+                return false
             }
             const keys = Object.keys(state.pickTarget)
             if (keys.length >= state.limitNo) {
-              delete state.pickTarget[keys[0]]
+                delete state.pickTarget[keys[0]]
             }
-            state.pickTarget[pet.name] = {...pet, hide:false}
+            state.pickTarget[pet.name] = { ...pet, hide: false }
         }
 
         const submit = () => {
             clearTimeout(timer)
-            if(!Object.keys(state.pickTarget).length) {
+            if (!Object.keys(state.pickTarget).length) {
                 state.errorMsg = 'Please pick your pets ~'
                 state.errShow = true
-                timer = setTimeout(()=>{
+                timer = setTimeout(() => {
                     state.errShow = false
                 }, 2000)
                 return false
             }
-            if(!state.gitEmail) {
+            if (!state.gitEmail) {
                 state.errorMsg = 'Please enter your email address !'
                 state.errShow = true
-                timer = setTimeout(()=>{
+                timer = setTimeout(() => {
                     state.errShow = false
                 }, 2000)
                 return false
@@ -112,14 +112,14 @@ export default defineComponent({
             if (isPass == false) {
                 state.errorMsg = 'Please make sure to enter a valid email address !'
                 state.errShow = true
-                timer = setTimeout(()=>{
+                timer = setTimeout(() => {
                     state.errShow = false
                 }, 2000)
                 return false
             }
             const title = encodeURIComponent(`[New] 申请`)
             const body = encodeURIComponent(
-`<!-- ❤️ 哇，终于等到你了。 -->
+                `<!-- ❤️ 哇，终于等到你了。 -->
 <!-- ❤️ Wow, finally waiting for you。 -->
 
 ### 😀 申请人 Applicant
@@ -131,9 +131,9 @@ GitHub Email: ${state.gitEmail}
 
 ### 🌏 领养萌物 Adopt
 
-${Object.keys(state.pickTarget).map((name,index) => {
-    return index+1 + '. ' +name +'\n'
-}).join('')}
+${Object.keys(state.pickTarget).map((name, index) => {
+                    return index + 1 + '. ' + name + '\n'
+                }).join('')}
 
 <!-- 请在上方填写你想要领养的萌物，原则上仅支持单人领养5个，请大家谨慎挑选。超出5个，会取前5个哦。若您心仪的萌物没列出，欢迎提出。 -->
 <!-- Please fill in the small pets you want to adopt at the top. In principle, only 5 small pets can be adopted by one person. Please choose carefully. If there are more than 5, the first 5 will be taken. If your favorite pet is not listed, please suggest. -->
@@ -148,8 +148,12 @@ ${Object.keys(state.pickTarget).map((name,index) => {
             )
 
             window.location.replace(
-              `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}`
+                `https://github.com/zoo-js/zoo/issues/new?title=${title}&body=${body}`
             );
+        }
+
+        const handleClass = (className) => {
+            state.className = className
         }
 
         const renderHeader = () => {
@@ -161,14 +165,14 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                     <a href="https://github.com/zoo-js/zoo-issue-helper" target="_blank">
                         <h1>Zoo issue helper</h1>
                     </a>
-                    
+
                     <div class="chose-pets">
                         <TransitionGroup name="pets-beat">
                             {
-                                Object.values(state.pickTarget).map( (item, index) => {
+                                Object.values(state.pickTarget).map((item, index) => {
                                     return <div key={index}>
                                         <Transition name="pet-beat">
-                                            {!item.hide?<img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={ () => { pickPets(state.pickTarget[item.name]) } } width="40" />:null}
+                                            {!item.hide ? <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={() => { pickPets(state.pickTarget[item.name]) }} width="40" /> : null}
                                         </Transition>
                                     </div>
                                 })
@@ -178,10 +182,10 @@ ${Object.keys(state.pickTarget).map((name,index) => {
 
                     <div class="zoo-header-form">
                         <div class="zoo-header-item">
-                            <label class={state.iFocus||state.gitEmail?'label-title':''} onClick={ () => { document.getElementById('searchInput').focus() } } >Enter your GitHub Email</label>
-                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={ () => { state.iFocus = true } } onBlur={ () => { state.iFocus = false } }/>
+                            <label class={state.iFocus || state.gitEmail ? 'label-title' : ''} onClick={() => { document.getElementById('searchInput').focus() }} >Enter your GitHub Email</label>
+                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={() => { state.iFocus = true }} onBlur={() => { state.iFocus = false }} />
                         </div>
-                        <button class="zoo-header-submit" onClick={ () => { submit() } }>Submit</button>
+                        <button class="zoo-header-submit" onClick={() => { submit() }}>Submit</button>
                     </div>
                     <a href="https://zoo-js.github.io/zoo-charts/" target="_blank" class="goto">
                         View charts !
@@ -192,19 +196,27 @@ ${Object.keys(state.pickTarget).map((name,index) => {
         }
 
         const renderMain = () => {
-            return <div>  
+            const classList = Object.keys(state.petTarget).sort((a, b) => a.localeCompare(b))
+            state.className = state.className || classList?.[0]
+            return <div class="zoo-body">
+                <div class="zoo-class">
                     {
-                        Object.keys(state.petTarget).sort((a, b) => a.localeCompare(b)).map(key => {
-                            return renderPetItem(key, state.petTarget[key])
+                        classList.map(className => {
+                            return <div class={className === state.className ? 'zoo-class-item zoo-class-item-active' : 'zoo-class-item'} onClick={() => handleClass(className)}>{className}</div>
                         })
                     }
+                </div>
+                {
+                    classList.map(className => {
+                        return renderPetItem(className, state.petTarget[className])
+                    })
+                }
             </div>
         }
 
-        const renderPetItem = (key, petList) => {
-            return <>
-                <p class="zoo-class">{key}</p>
-                <div class="zoo-main">
+        const renderPetItem = (className, petList) => {
+            return <div>
+                <div class={className === state.className ? 'zoo-main zoo-show' : 'zoo-main zoo-hide'}>
                     <div class="zoo-main-content">
                         {
                             petList.map(item => {
@@ -213,16 +225,16 @@ ${Object.keys(state.pickTarget).map((name,index) => {
                         }
                     </div>
                 </div>
-            </>
+            </div>
         }
 
         const renderPet = (pet) => {
-            return <div onClick={ () => { pickPets(pet) } } class={ state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
+            return <div onClick={() => { pickPets(pet) }} class={state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
                 <div class="card-img">
-                    <img vLazyLoad={`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`}/>
+                    <img vLazyLoad={`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`} />
                 </div>
                 <div class="card-text">
-                    { pet.name }
+                    {pet.name}
                 </div>
             </div>
         }
@@ -233,14 +245,14 @@ ${Object.keys(state.pickTarget).map((name,index) => {
             </div>
         }
 
-        onMounted( () => {
+        onMounted(() => {
             getPets()
         })
 
         return () => <>
-            { renderHeader() }
-            { renderMain() }
-            { renderError() }
+            { renderHeader()}
+            { renderMain()}
+            { renderError()}
         </>
     }
 })

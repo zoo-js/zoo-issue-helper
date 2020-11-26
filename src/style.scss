@@ -7,11 +7,12 @@ body {
     height: 100vh;
     font-size: 62.5%;
     background-image: linear-gradient(180deg, #eaf1e7 30%, #d9dfe4 45%, #e6dcc8 71%, #eaf1e7 91%);
-    user-select: none;
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
     .goto {
         position: fixed;
         top: 10px;
@@ -31,13 +32,20 @@ body {
         font-family: "Montserrat";
         cursor: pointer;
         z-index: 99;
+
         &:hover {
             animation-play-state: paused;
         }
     }
+
     @keyframes hue {
-        from { filter: hue-rotate(0deg); }
-        to { filter: hue-rotate(360deg); }
+        from {
+            filter: hue-rotate(0deg);
+        }
+
+        to {
+            filter: hue-rotate(360deg);
+        }
     }
 
     .zoo-header {
@@ -48,37 +56,44 @@ body {
         height: 76px;
         width: 100vw;
         z-index: 99;
+
         &-content {
             width: 1024px;
             margin: 0 auto;
             display: flex;
             height: 76px;
             line-height: 76px;
-            a + a {
-              margin-left: 10px;
-              text-decoration: none;
+
+            a+a {
+                margin-left: 10px;
+                text-decoration: none;
             }
+
             h1 {
                 font-family: "Montserrat";
                 margin: 0 20px;
                 font-size: 24px;
                 line-height: 76px;
                 font-weight: normal;
-                color: rgba(0,0,0,.85);
+                color: rgba(0, 0, 0, .85);
                 text-shadow: #494a45 1px 2px 4px;
             }
+
             img {
                 margin-top: 8px;
             }
         }
+
         &-form {
             position: absolute;
             display: flex;
             margin-left: 600px;
             align-items: center;
         }
+
         &-item {
             font-family: "Montserrat";
+
             input {
                 font-family: "Montserrat";
                 border: none;
@@ -88,14 +103,16 @@ body {
                 padding: 6px;
                 font-size: 16px;
             }
+
             label {
-                height:0;
+                height: 0;
                 position: absolute;
                 transition: all .5s;
                 font-size: 16px;
                 color: #666;
                 cursor: text;
             }
+
             .label-title {
                 transform: translateX(-20px) translateY(-10px) scale(0.7);
                 color: #26A699;
@@ -103,9 +120,10 @@ body {
             }
 
         }
+
         &-submit {
             font-family: "Montserrat";
-            outline:none;
+            outline: none;
             filter: chroma(color=#000000);
             font-size: 16px;
             color: white;
@@ -114,13 +132,15 @@ body {
             border-radius: 4px;
             margin-left: 20px;
             background-color: #5bb9b0;
-            box-shadow: 0 0 2px  #26A699;
+            box-shadow: 0 0 2px #26A699;
             transition: all .3s;
             cursor: pointer;
+
             &:hover {
                 background-color: #4ac5bb;
-                box-shadow: 0 0 10px  #2da196;
+                box-shadow: 0 0 10px #2da196;
             }
+
             &:active {
                 transform: translateY(4px);
             }
@@ -140,32 +160,82 @@ body {
         margin-left: 20px;
         display: flex;
         align-items: center;
+
         div {
-          display: flex;
-          img {
-              cursor: pointer;
-          }
-          & + div {
-            margin-left: 10px;
-          }
+            display: flex;
+
+            img {
+                cursor: pointer;
+            }
+
+            &+div {
+                margin-left: 10px;
+            }
         }
-      }
+    }
+
+    .zoo-body {
+        padding-top: 80px
+    }
 
     .zoo-class {
-        &:first-child{
-            margin-top: 100px;
+        display: flex;
+        width: calc(100% - 40px);
+        max-width: 1280px;
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &-item {
+            margin: 5px;
+            font-size: 20px;
+            font-family: "Montserrat";
+            cursor: pointer;
+            padding: 5px 12px;
+            border: 1px solid #26A699;
+            border-radius: 10px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 5px #72c5bd;
+            color: #26A699;
+            transition: all .5s;
+
+            &:hover {
+                box-shadow: 0 0 8px #4eb8ad;
+                background-color: #44cfc1;
+                border: 1px solid #44cfc1;
+                color: white;
+            }
+
+            &-active {
+                background-color: #26A699;
+                color: white;
+            }
         }
-        margin-bottom: 10px;
-        font-family: "Montserrat";
-        text-align: center;
-        font-size: 36px;
+    }
+
+    .zoo-show {
+        opacity: 1;
+        transition: all 1s;
+    }
+
+    .zoo-hide {
+        opacity: 0;
+
+        div {
+            height: 0;
+        }
+
+        transform: translateY(50px);
+        transition: all .4s;
     }
 
     .zoo-main {
         width: 100%;
         display: flex;
         justify-content: center;
-        position: relative;
+        position: absolute;
+
         &-content {
             width: calc(100% - 40px);
             max-width: 1280px;
@@ -174,6 +244,7 @@ body {
             grid-template-columns: repeat(auto-fill, 160px);
             grid-gap: 10px;
         }
+
         &-card {
             width: 160px;
             height: 200px;
@@ -183,16 +254,19 @@ body {
             transition: all 0.3s;
             cursor: pointer;
             margin-top: 10px;
+
             &:hover {
-                box-shadow: 0 1px 2px -2px rgba(0,0,0,.16), 0 3px 6px 0 rgba(0,0,0,.12), 0 5px 12px 4px rgba(0,0,0,.09);
-              }
-              &:last-child {
+                box-shadow: 0 1px 2px -2px rgba(0, 0, 0, .16), 0 3px 6px 0 rgba(0, 0, 0, .12), 0 5px 12px 4px rgba(0, 0, 0, .09);
+            }
+
+            &:last-child {
                 margin-bottom: 40px;
-              }
-              &-chose {
+            }
+
+            &-chose {
                 border-color: #26A699;
                 box-shadow: 0 1px 2px -2px #26a69991, 0 3px 6px 0 #26a69945, 0 5px 12px 4px #26a69945 !important;
-              }
+            }
         }
     }
 
@@ -200,6 +274,7 @@ body {
         margin: 20px auto;
         display: flex;
         justify-content: center;
+
         img {
             width: 100px;
             height: 100px;
@@ -225,10 +300,12 @@ body {
         top: 20px;
         transition: all .5s;
         box-shadow: 0 0 10px rgb(209, 97, 97);
+
         &-show {
             top: 90px;
         }
     }
+
     @media screen and (max-width: 1024px) {
         .zoo-header-form {
             display: none;
@@ -260,6 +337,7 @@ body {
             opacity: 1;
         }
     }
+
     @media screen and (max-width: 480px) {
         .zoo-header-content {
             h1 {
@@ -278,6 +356,7 @@ body {
 .pets-beat-enter-active {
     animation: petEnter 0.4s;
 }
+
 .pet-beat-leave-active {
     animation: petLeave 0.4s;
 }
@@ -287,26 +366,63 @@ body {
         transform: translateY(0px) scale(0.6);
         opacity: 0;
     }
+
     40% {
         transform: translateY(-10px);
         opacity: 1;
     }
+
     100% {
         transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
+
 @keyframes petLeave {
     0% {
-        transform: translateY(0px)  scale(1);
+        transform: translateY(0px) scale(1);
         opacity: 1;
     }
+
     40% {
         transform: translateY(-10px);
         opacity: 1;
     }
+
     100% {
-        transform: translateY(0)  scale(0.5);
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.class-fade-enter-active {
+    animation: classEnter .8s;
+}
+
+.class-fade-leave-active {
+    animation: classLeave .8s;
+}
+
+@keyframes classEnter {
+    50% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes classLeave {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(0.1);
         opacity: 0;
     }
 }
