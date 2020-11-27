@@ -192,7 +192,8 @@ body {
         margin: 0 auto;
         justify-content: center;
         flex-wrap: wrap;
-
+        position: fixed;
+        z-index: 10;
         &-item {
             margin: 5px;
             font-size: 20px;
@@ -229,7 +230,7 @@ body {
         display: flex;
         justify-content: center;
         position: absolute;
-
+        margin-top: 50px;
         &-content {
             width: calc(100% - 40px);
             max-width: 1280px;
@@ -352,11 +353,20 @@ body {
         }
     }
 
+    @media screen and (max-width: 700px) {
+        .zoo-main {
+            margin-top: 100px;
+        }
+    }
+    
     @media screen and (max-width: 480px) {
         .zoo-header-content {
             h1 {
                 display: none;
             }
+        }
+        .zoo-main {
+            margin-top: 150px;
         }
     }
 
