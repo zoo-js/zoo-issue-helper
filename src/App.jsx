@@ -153,6 +153,7 @@ ${Object.keys(state.pickTarget).map((name, index) => {
         }
 
         const handleClass = (className) => {
+            window.scrollTo(0,0);
             state.className = className
         }
 
