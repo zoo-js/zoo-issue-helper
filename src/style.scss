@@ -187,9 +187,8 @@ body {
 
     .zoo-class {
         display: flex;
-        width: calc(100% - 40px);
-        max-width: 1280px;
-        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
         justify-content: center;
         flex-wrap: wrap;
         position: fixed;
