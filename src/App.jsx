@@ -228,7 +228,7 @@ ${Object.keys(state.pickTarget).map((name, index) => {
         }
 
         const renderPet = (pet) => {
-            return <div onClick={() => { pickPets(pet) }} class={state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
+            return <div title={pet.cnName} onClick={() => { pickPets(pet) }} class={state.pickTarget[pet.name] ? 'zoo-main-card zoo-main-card-chose' : 'zoo-main-card'}>
                 <div class="card-img">
                     <img vLazyLoad={`https://avatars0.githubusercontent.com/u/${pet.code}?s=100&v=4`} />
                 </div>
