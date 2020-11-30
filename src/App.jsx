@@ -122,6 +122,8 @@ export default defineComponent({
             const body = encodeURIComponent(
 `<!-- ❤️ 哇，终于等到你了。 -->
 <!-- ❤️ Wow, finally waiting for you。 -->
+<!-- ⚡⚡⚡ 为了方便 Actions 自动处理，请勿修改 issue 格式，谢谢！  -->
+<!-- ⚡⚡⚡ In order to facilitate the automatic processing of Actions, please do not modify the issue format, thank you!  -->
 
 ### 😀 申请人 Applicant
 
