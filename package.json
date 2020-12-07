@@ -20,7 +20,7 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "compression-webpack-plugin": "^6.0.5",
-    "sass": "1.29.0",
+    "sass": "1.30.0",
     "sass-loader": "10.1.0"
   },
   "browserslist": [
