@@ -11,7 +11,7 @@
   "dependencies": {
     "@zoo-js/colors": "^0.0.2",
     "axios": "0.21.0",
-    "core-js": "3.8.0",
+    "core-js": "3.8.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
