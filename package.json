@@ -9,7 +9,7 @@
     "build:dev": "export NODE_ENV='development' && vue-cli-service build"
   },
   "dependencies": {
-    "@zoo-js/colors": "^0.0.2",
+    "@zoo-js/layout": "^0.0.3",
     "axios": "^0.21.0",
     "core-js": "^3.8.1",
     "vue": "^3.0.0"
