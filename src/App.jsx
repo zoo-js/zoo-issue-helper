@@ -160,48 +160,39 @@ ${Object.keys(state.pickTarget).map((name, index) => {
         }
 
         const renderHeader = () => {
-            return <div class="zoo-header">
-                <div class="zoo-header-content">
-                    <a href="https://github.com/zoo-js" target="_blank">
-                        <img src={`https://avatars1.githubusercontent.com/u/70757173?s=60&v=4`} />
-                    </a>
-                    <a href="https://github.com/zoo-js/zoo-issue-helper" target="_blank">
-                        <h1>Zoo issue helper</h1>
-                    </a>
-
-                    <div class="chose-pets">
-                        <TransitionGroup name="pets-beat">
-                            {
-                                Object.values(state.pickTarget).map((item, index) => {
-                                    return <div key={index}>
-                                        <Transition name="pet-beat">
-                                            {!item.hide ? <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={() => { pickPets(state.pickTarget[item.name]) }} width="40" /> : null}
-                                        </Transition>
-                                    </div>
-                                })
-                            }
-                        </TransitionGroup>
-                    </div>
-
-                    <div class="zoo-header-form">
-                        <div class="zoo-header-item">
-                            <label class={state.iFocus || state.gitEmail ? 'label-title' : ''} onClick={() => { document.getElementById('searchInput').focus() }} >Enter your GitHub Email</label>
-                            <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={() => { state.iFocus = true }} onBlur={() => { state.iFocus = false }} />
-                        </div>
-                        <button class="zoo-header-submit" onClick={() => { submit() }}>Submit</button>
-                    </div>
-                    <a href="https://zoo-js.github.io/zoo-charts/" target="_blank" class="goto">
-                        View charts !
-                    </a>
-                    <p class="below-msg">Below 1024px preview only !</p>
+            return <>
+                <div class="chose-pets">
+                    <TransitionGroup name="pets-beat">
+                        {
+                            Object.values(state.pickTarget).map((item, index) => {
+                                return <div key={index}>
+                                    <Transition name="pet-beat">
+                                        {!item.hide ? <img src={`https://avatars0.githubusercontent.com/u/${item.code}?s=100&v=4`} onClick={() => { pickPets(state.pickTarget[item.name]) }} width="40" /> : null}
+                                    </Transition>
+                                </div>
+                            })
+                        }
+                    </TransitionGroup>
                 </div>
-            </div>
+
+                <div class="zoo-header-form">
+                    <div class="zoo-header-item">
+                        <label class={state.iFocus || state.gitEmail ? 'label-title' : ''} onClick={() => { document.getElementById('searchInput').focus() }} >Enter your GitHub Email</label>
+                        <input id="searchInput" type="text" v-model={state.gitEmail} onFocus={() => { state.iFocus = true }} onBlur={() => { state.iFocus = false }} />
+                    </div>
+                    <button class="zoo-header-submit" onClick={() => { submit() }}>Submit</button>
+                </div>
+                <a href="https://zoo-js.github.io/zoo-charts/" target="_blank" class="goto">
+                    View charts !
+                </a>
+                <p class="below-msg">Below 1024px preview only !</p>
+            </>
         }
 
         const renderMain = () => {
             const classList = Object.keys(state.petTarget).sort((a, b) => a.localeCompare(b))
             state.className = state.className || classList?.[0]
-            return <div class="zoo-body">
+            return <>
                 <div class="zoo-class">
                     {
                         classList.map(className => {
@@ -214,7 +205,7 @@ ${Object.keys(state.pickTarget).map((name, index) => {
                         return renderPetItem(className, state.petTarget[className])
                     })
                 }
-            </div>
+            </>
         }
 
         const renderPetItem = (className, petList) => {
@@ -247,14 +238,26 @@ ${Object.keys(state.pickTarget).map((name, index) => {
             </div>
         }
 
+        const renderLayout = () => {
+            const title = {
+                name: 'Zoo issue helper',
+                url: 'https://github.com/zoo-js/zoo-issue-helper'
+            }
+            const slots = {
+                header: () => renderHeader()
+            }
+            return (
+                <Layout title={title} v-slots={slots}>
+                    { renderMain() }
+                    { renderError() }
+                </Layout>
+            )
+        }
+
         onMounted(() => {
             getPets()
         })
 
-        return () => <>
-            { renderHeader()}
-            { renderMain()}
-            { renderError()}
-        </>
+        return () => renderLayout()
     }
 })
