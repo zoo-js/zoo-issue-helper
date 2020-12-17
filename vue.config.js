@@ -1,4 +1,4 @@
-const CompressionWebpackPlugin = require("compression-webpack-plugin")
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
 const productionGzip = true
 const productionGzipExtensions = ['js', 'css']
