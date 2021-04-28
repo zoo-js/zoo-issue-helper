@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: compression-webpack-plugin
+    versions:
+    - "> 6.0.4"
+  - dependency-name: quasar
+    versions:
+    - "> 1.14.2"
+  - dependency-name: sass-loader
+    versions:
+    - "> 10.1.1"
