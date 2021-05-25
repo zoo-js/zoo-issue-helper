@@ -108,7 +108,8 @@ export default defineComponent({
                 }, 2000)
                 return false
             }
-            const rePass = new RegExp('^([a-zA-Z0-9]+[_|\\_|\\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\\_|\\.]?)*[a-zA-Z0-9]+\\.[a-zA-Z]{2,3}$', '');
+            const EMAIL_REGEXP_STR = "^"+"[+a-zA-Z0-9_.!#$%&\'*\\/=?^`{|}~-]+" + "@" + "([a-zA-Z0-9-]+\\.)+[a-zA-Z0-9]{2,63}" + "$"
+            const rePass = new RegExp(EMAIL_REGEXP_STR, '');
             const isPass = rePass.test(state.gitEmail);
             if (isPass == false) {
                 state.errorMsg = 'Please make sure to enter a valid email address !'
